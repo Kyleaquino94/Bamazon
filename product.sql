@@ -11,4 +11,5 @@ values	("airpods","electronics",299.99, 200),
 ("Walking dead","DVD", 29.99, 49);
 
 
-SELECT * FROM bamazon_db.products;
+SELECT * FROM bamazon.products;
+
