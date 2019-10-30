@@ -19,7 +19,7 @@ connection.connect(function(err){
 var makeTable = function(){
     connection.query("SELECT * FROM products", function(err,res){
         for(var i=0; i<res.length; i++){
-            console.log(res[i].itemid+" || "+res[i].productname+" || "+ res[i].departmentname+" || "+res[i].price+" || "+res[i].stockquantity+"\n|)");
+            console.log(res[i].itemid+" || "+res[i].productname+" || "+ res[i].departmentname+" || "+res[i].price+" || "+res[i].stockquantity+"\n|");
         }
         promptCustomer(res);
     })
@@ -53,7 +53,7 @@ var promptCustomer = function(res){
                     }
                 }).then(function(answer){
                     if((res[id].stockquantity-answer.quant)>0){
-                        connection.query("UPDATE products SET stockquantity='"+(res[id].stockquantity-answer.quant)+"'", function(err,res2){
+                        connection.query("UPDATE products SET stockquantity='"+(res[id].stockquantity-answer.quant)+"'WHERE productname='"+product+"'", function(err,res2){
                             console.log("Product Bought!");
                             makeTable();
                         })
